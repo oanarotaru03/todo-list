@@ -78,3 +78,23 @@ h1 {
 .delete-btn:hover {
     background-color: #c0392b;
 }
+.filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.filter-btn {
+    padding: 6px 14px;
+    border: 2px solid #1a5276;
+    background-color: white;
+    color: #1a5276;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.filter-btn.active {
+    background-color: #1a5276;
+    color: white;
+}

@@ -78,3 +78,30 @@ taskInput.addEventListener("keypress", function(event) {
 });
 
 loadTasks();
+const filterBtns = document.querySelectorAll(".filter-btn");
+
+filterBtns.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        filterBtns.forEach(function(b) {
+            b.classList.remove("active");
+        });
+        btn.classList.add("active");
+
+        const filter = btn.dataset.filter;
+        const allTasks = taskList.querySelectorAll("li");
+
+        allTasks.forEach(function(li) {
+            const isCompleted = li.querySelector("span").classList.contains("completed");
+
+            if (filter === "all") {
+                li.style.display = "flex";
+            } else if (filter === "active" && !isCompleted) {
+                li.style.display = "flex";
+            } else if (filter === "completed" && isCompleted) {
+                li.style.display = "flex";
+            } else {
+                li.style.display = "none";
+            }
+        });
+    });
+});
