@@ -37,11 +37,13 @@ function createTaskElement(taskText, isCompleted) {
     span.addEventListener("click", function() {
         span.classList.toggle("completed");
         saveTasks();
+        updateCounter();
     });
 
     deleteBtn.addEventListener("click", function() {
         li.remove();
         saveTasks();
+        updateCounter();
     });
 }
 
@@ -54,6 +56,7 @@ function addTask() {
 
     createTaskElement(taskText, false);
     saveTasks();
+    updateCounter();
 
     taskInput.value = "";
 }
@@ -68,7 +71,11 @@ function loadTasks() {
         });
     }
 }
-
+const counterDisplay = document.getElementById("counterDisplay");
+const updateCounter = () => {
+    const activeTasks = taskList.querySelectorAll("li span:not(.completed)");
+    counterDisplay.textContent = activeTasks.length + " tasks left";
+};
 addBtn.addEventListener("click", addTask);
 
 taskInput.addEventListener("keypress", function(event) {
@@ -78,6 +85,7 @@ taskInput.addEventListener("keypress", function(event) {
 });
 
 loadTasks();
+updateCounter();
 const filterBtns = document.querySelectorAll(".filter-btn");
 
 filterBtns.forEach(function(btn) {
