@@ -74,7 +74,7 @@ function loadTasks() {
 const counterDisplay = document.getElementById("counterDisplay");
 const updateCounter = () => {
     const activeTasks = taskList.querySelectorAll("li span:not(.completed)");
-    counterDisplay.textContent = activeTasks.length + " tasks left";
+    counterDisplay.textContent = `${activeTasks.length} tasks left`;
 };
 addBtn.addEventListener("click", addTask);
 
