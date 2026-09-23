@@ -1,6 +1,7 @@
 const taskInput = document.getElementById("taskInput");
 const addBtn = document.getElementById("addBtn");
 const taskList = document.getElementById("taskList");
+const clearCompletedBtn = document.getElementById("clearCompletedBtn");
 
 function saveTasks() {
     const tasks = [];
@@ -46,7 +47,14 @@ function createTaskElement(taskText, isCompleted) {
         updateCounter();
     });
 }
-
+clearCompletedBtn.addEventListener("click", () => {
+    const completedTasks = taskList.querySelectorAll("li span.completed");
+    completedTasks.forEach((span) => {
+        span.parentElement.remove();
+    });
+    saveTasks();
+    updateCounter();
+});
 function addTask() {
     const taskText = taskInput.value;
 
